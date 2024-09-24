@@ -10,7 +10,7 @@ Por escolhas de modelagem os arquivos irão ser usados localmente na estrutura d
 
 # Estrutura do Projeto
 Para o projeto foi escolhida a seguinte estrutura:
-* Dags - É o arquivo que contém todo o processo, desde preparar dados raw, passar para silver e gold. Nele também consta as instruções da DAG e as tasks. Como o projeto era relativamente pequeno, não foi escolhido particionair em vários códigos como por exemplo um para cada camada e suas respectivas tasks. Em um projeto maior é necessário esse particionamento.
+* Dags - É o arquivo que contém todo o processo, desde preparar dados raw, passar para silver e gold. Nele também consta as instruções da DAG e as tasks. Como o projeto era relativamente pequeno, não foi escolhido particionair em vários códigos como por exemplo um para cada camada e suas respectivas tasks. Em um projeto maior é necessário esse particionamento. Todas tasks estão com 'RETRIES' para se recuperar em caso de falha.
 
 * raw_data - É a pasta onde os arquivos gerados pela camada bronze irão ser armazenados em seu formato JSON com a data de ingestão no fim de cada nome.
 
@@ -80,7 +80,7 @@ http://localhost:8080
 8. Despause a DAG no canto superior esquerdo e coloque para rodar na setinha azul superior a direita 'Trigger Dag'
 ![Dag](pngs/dag.png)
 
-9. Assim que a DAG executar conferir se status está como 'success'
+9. Assim que a DAG executar conferir se status está como 'success'. Todas tasks estão com 'RETRIES' para se recuperar em caso de falha.
 ![Ok](pngs/ok.png)
 
 10. Conferir se todas as tasks se completaram ao clicar no menu 'Graph'
